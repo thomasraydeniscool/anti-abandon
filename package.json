@@ -4,8 +4,7 @@
   "description": "Shopify app that gathers emails with a discount popup.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node .",
-    "start:react": "react-scripts start"
+    "start": "ts-node ."
   },
   "author": "Thomas Rayden",
   "license": "UNLICENSED",
@@ -16,18 +15,15 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "got": "^9.2.1",
+    "mongoose": "^5.3.0",
     "nonce": "^1.0.4",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
     "shopify-api-node": "^2.15.0",
-    "shopify-express": "^1.0.1",
-    "styled-components": "^3.4.6"
+    "shopify-express": "^1.0.1"
   },
   "devDependencies": {
     "@types/express": "^4.16.0",
     "@types/got": "^8.3.3",
     "@types/node": "^10.9.4",
-    "react-scripts": "^1.1.5",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
