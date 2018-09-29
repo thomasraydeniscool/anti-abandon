@@ -7,7 +7,8 @@ export const ShopSchema = new mongoose.Schema({
   },
   access_token: {
     type: String
-  }
+  },
+  preferences: {}
 });
 
 export const Shop = mongoose.model('Shop', this.ShopSchema);
