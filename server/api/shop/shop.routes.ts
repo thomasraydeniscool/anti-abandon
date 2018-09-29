@@ -8,6 +8,7 @@ import {
 import { Shop } from './shop.model';
 import { ApiNotFound } from '../../lib/ApiNotFound';
 import { ApiSuccess } from '../../lib/ApiSuccess';
+import { env } from '../../environment';
 
 const GET: IRouteGet[] = [
   {
@@ -15,7 +16,7 @@ const GET: IRouteGet[] = [
     path: '/',
     steps: [
       async (req, res) => {
-        res.end('hello');
+        res.end('hello world');
       }
     ]
   }
