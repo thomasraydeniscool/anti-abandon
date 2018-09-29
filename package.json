@@ -4,7 +4,7 @@
   "description": "Shopify app that gathers emails with a discount popup.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ."
+    "start": "ts-node ./src"
   },
   "author": "Thomas Rayden",
   "license": "UNLICENSED",
@@ -15,6 +15,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "got": "^9.2.1",
+    "http-status": "^1.2.0",
     "mongoose": "^5.3.0",
     "nonce": "^1.0.4",
     "shopify-api-node": "^2.15.0",
