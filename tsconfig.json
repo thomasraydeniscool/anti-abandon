@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "es6"],
+    "jsx": "react",
     "allowJs": true,
-    "jsx": "react"
-  }
+    "removeComments": true
+  },
+  "include": ["./server/**/*", "./client/**/*"]
 }
