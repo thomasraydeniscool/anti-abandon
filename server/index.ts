@@ -7,6 +7,11 @@ import * as express from 'express';
 import * as expressSession from 'express-session';
 import * as morgan from 'morgan';
 
+import * as React from 'react';
+// tslint:disable-next-line:no-submodule-imports
+import { renderToString } from 'react-dom/server';
+import App from '../client/App';
+
 import * as ShopifyExpress from 'shopify-express';
 import * as ShopifyClient from 'shopify-api-node';
 
@@ -15,6 +20,8 @@ import { MongooseStrategy } from './strategy';
 import { ShopRouter } from './api/shop/shop.routes';
 
 const app = express();
+
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -52,11 +59,13 @@ app.get(
   (req, res) => {
     const { session } = req;
     const { shop, accessToken } = session;
+    const react = renderToString(React.createElement(App));
     res.render('app', {
       title: 'Email Gatherer',
       apiKey: env.SHOPIFY_KEY,
-      shop,
-      development: env.DEVELOPMENT
+      development: env.DEVELOPMENT,
+      app: react,
+      shop
     });
   }
 );

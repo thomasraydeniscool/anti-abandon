@@ -4,12 +4,13 @@
   "description": "Shopify app that gathers emails with a discount popup.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ./server"
+    "start": "ts-node ./server",
+    "build:client": "webpack"
   },
   "author": "Thomas Rayden",
   "license": "UNLICENSED",
   "dependencies": {
-    "@types/express-session": "^1.15.11",
+    "@shopify/polaris": "^2.10.0",
     "cookie": "^0.3.1",
     "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
@@ -24,15 +25,23 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "shopify-api-node": "^2.15.0",
-    "shopify-express": "^1.0.1"
+    "shopify-express": "^1.0.3"
   },
   "devDependencies": {
     "@types/express": "^4.16.0",
+    "@types/express-session": "^1.15.11",
     "@types/got": "^8.3.3",
     "@types/node": "^10.9.4",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.8",
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.23.0",
+    "ts-loader": "^5.2.1",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.0.3",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   }
 }
