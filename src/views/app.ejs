@@ -11,8 +11,18 @@
 </head>
 
 <body>
-  <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
+  <!--
+    Vue
+  -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 
+  <!--
+    Shopify SDK
+  -->
+  <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
   <script>
     window.apiKey = "<%= apiKey %>";
     window.shopOrigin = "https://<%= shop %>";
@@ -33,10 +43,7 @@
     ShopifyApp.init(shopifyAppConfig);
   </script>
 
-  <div id="root">
-    <%- app %>
-  </div>
-  <script src="./client.bundle.js"></script>
+
 </body>
 
 </html>

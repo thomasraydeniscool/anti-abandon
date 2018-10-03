@@ -7,11 +7,6 @@ import * as express from 'express';
 import * as expressSession from 'express-session';
 import * as morgan from 'morgan';
 
-import * as React from 'react';
-// tslint:disable-next-line:no-submodule-imports
-import { renderToString } from 'react-dom/server';
-import App from '../client/App';
-
 import * as ShopifyExpress from 'shopify-express';
 import * as ShopifyClient from 'shopify-api-node';
 
@@ -59,13 +54,10 @@ app.get(
   (req, res) => {
     const { session } = req;
     const { shop, accessToken } = session;
-    const react = renderToString(React.createElement(App));
     res.render('app', {
-      title: 'Email Gatherer',
-      apiKey: env.SHOPIFY_KEY,
       development: env.DEVELOPMENT,
-      app: react,
       origin: env.ORIGIN,
+      apiKey: env.SHOPIFY_KEY,
       shop
     });
   }
