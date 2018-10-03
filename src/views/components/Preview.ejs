@@ -1,0 +1,32 @@
+<style>
+  .preview {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+</style>
+
+<script type="text/x-template" id="preview-template">
+<div class="preview">
+  <h1>{{ custom.header }}</h1>
+  <h4>{{ custom.subHeader }}</h4>
+</div>
+</script>
+
+<script>
+  Vue.component('Preview', {
+    template: '#preview-template',
+    props: {
+      custom: {
+        header: String,
+        subHeader: String
+      },
+    },
+    data: function () {
+      return {
+        count: 0
+      };
+    }
+  });
+</script>
