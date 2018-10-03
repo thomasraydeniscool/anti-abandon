@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Card, FormLayout, TextField, Button, Form } from '@shopify/polaris';
-import { Formik } from 'formik';
 
 class Settings extends React.Component<any, any> {
   constructor(props) {
