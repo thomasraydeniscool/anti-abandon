@@ -14,12 +14,14 @@
   <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
 
   <script>
-    window.apiKey = "<%= apiKey %>"
-    window.shopOrigin = "https://<%= shop %>"
+    window.apiKey = "<%= apiKey %>";
+    window.shopOrigin = "https://<%= shop %>";
+    window.shop = "<%= shop %>";
+    window.origin = "<%= origin %>";
     const shopifyAppConfig = {
       apiKey: window.apiKey,
       shopOrigin: window.shopOrigin,
-    }
+    };
     // This will allow you to access the app outside of the Shopify
     // parent iframe in development mode. Doing this will give you
     // access to React and Redux dev tools, but will also disrupt

@@ -1,5 +1,8 @@
 import * as React from 'react';
+import Fetch from 'isomorphic-unfetch';
 import { Card, FormLayout, TextField, Button, Form } from '@shopify/polaris';
+
+declare const window: any;
 
 class Settings extends React.Component<any, any> {
   constructor(props) {
@@ -14,6 +17,15 @@ class Settings extends React.Component<any, any> {
 
   public handleChange(value, id) {
     this.setState(prevState => ({ ...prevState, [id]: value }));
+  }
+
+  public handleSubmit(event) {
+    // TODO: Find way to send data to react
+    // https://medium.com/@diegocasmo/using-reacts-context-to-pass-variables-from-the-server-to-the-client-f2ce5f274172
+    // console.log(`${window.origin}/shop/${window.shop}`);
+
+    // Fetch(`${env.ORIGIN}/shop/${window.shop}`);
+    event.preventDefault();
   }
 
   public render() {
@@ -39,7 +51,9 @@ class Settings extends React.Component<any, any> {
               value={this.state.button}
               onChange={this.handleChange}
             />
-            <Button primary>Save</Button>
+            <Button submit primary>
+              Save
+            </Button>
           </FormLayout>
         </Form>
       </Card>

@@ -65,6 +65,7 @@ app.get(
       apiKey: env.SHOPIFY_KEY,
       development: env.DEVELOPMENT,
       app: react,
+      origin: env.ORIGIN,
       shop
     });
   }
