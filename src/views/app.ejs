@@ -50,7 +50,9 @@
                 <h2 class="Polaris-Heading">Preview</h2>
               </div>
               <div class="Polaris-Card__Section">
-                <p>View a summary of your online store’s performance.</p>
+
+                <Preview />
+
               </div>
             </div>
           </div>
@@ -60,42 +62,58 @@
                 <div class="Polaris-TextContainer">
                   <h2 class="Polaris-Heading">Customization</h2>
                   <div class="Polaris-Layout__AnnotationDescription">
-                    <p>Customize the appearance of the popup that is displayed to your customers.</p>
+                    <span>Change the appearance of the popup which is displayed to your customers.</span>
                   </div>
                 </div>
               </div>
               <div class="Polaris-Layout__AnnotationContent">
                 <div class="Polaris-Card">
                   <div class="Polaris-Card__Section">
-                    <div class="Polaris-FormLayout">
-                      <div class="Polaris-FormLayout__Item">
-                        <div class="">
-                          <div class="Polaris-Labelled__LabelWrapper">
-                            <div class="Polaris-Label">
-                              <label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Store name</label>
+
+                    <form @submit.prevent="handleSubmit">
+                      <div class="Polaris-FormLayout">
+                        <div class="Polaris-FormLayout__Item">
+                          <div class="">
+                            <div class="Polaris-Labelled__LabelWrapper">
+                              <div class="Polaris-Label">
+                                <label class="Polaris-Label__Text">Header text</label>
+                              </div>
+                            </div>
+                            <div class="Polaris-TextField">
+                              <input class="Polaris-TextField__Input" type="text" v-model="form.header">
+                              <div class="Polaris-TextField__Backdrop"></div>
+                            </div>
+                            <div class="Polaris-Labelled__HelpText">
+                              <span>Something to catch your customers attention</span>
                             </div>
                           </div>
-                          <div class="Polaris-TextField"><input id="TextField3" class="Polaris-TextField__Input"
-                              aria-label="Store name" aria-labelledby="TextField3Label" aria-invalid="false" value="">
-                            <div class="Polaris-TextField__Backdrop"></div>
-                          </div>
                         </div>
-                      </div>
-                      <div class="Polaris-FormLayout__Item">
-                        <div class="">
-                          <div class="Polaris-Labelled__LabelWrapper">
-                            <div class="Polaris-Label">
-                              <label id="TextField4Label" for="TextField4" class="Polaris-Label__Text">Account email</label>
+                        <div class="Polaris-FormLayout__Item">
+                          <div class="">
+                            <div class="Polaris-Labelled__LabelWrapper">
+                              <div class="Polaris-Label">
+                                <label class="Polaris-Label__Text">Sub header text</label>
+                              </div>
+                            </div>
+                            <div class="Polaris-TextField">
+                              <input class="Polaris-TextField__Input" type="text" v-model="form.subHeader">
+                              <div class="Polaris-TextField__Backdrop"></div>
+                            </div>
+                            <div class="Polaris-Labelled__HelpText">
+                              <span>A bit more detail on what the popup is about</span>
                             </div>
                           </div>
-                          <div class="Polaris-TextField">
-                            <input id="TextField4" class="Polaris-TextField__Input" type="email" aria-label="Account email"
-                              aria-labelledby="TextField4Label" aria-invalid="false" value="">
-                            <div class="Polaris-TextField__Backdrop"></div>
-                          </div>
+                        </div>
+                        <div class="Polaris-FormLayout__Item">
+                          <button type="button" class="Polaris-Button Polaris-Button--primary">
+                            <span class="Polaris-Button__Content">
+                              <span>Save</span>
+                            </span>
+                          </button>
                         </div>
                       </div>
-                    </div>
+                    </form>
+
                   </div>
                 </div>
               </div>
@@ -106,11 +124,10 @@
     </div>
   </div>
 
-  <script>
-    const vue = new Vue({
-      el: '#root'
-    });
-  </script>
+  <script src="components/Preview.js"></script>
+
+  <script src="app.js"></script>
+
 </body>
 
 </html>
