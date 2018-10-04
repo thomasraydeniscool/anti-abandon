@@ -13,10 +13,25 @@ import { env } from '../../environment';
 const GET: IRouteGet[] = [
   {
     type: RequestType.GET,
+    path: '/:shopify_domain',
+    steps: [
+      async (req, res) => {
+        const { params } = req;
+        const { shopify_domain } = params;
+        const shop = await Shop.findOne({ shopify_domain });
+        if (!shop) {
+          throw new ApiNotFound(res);
+        }
+        return new ApiSuccess(res, shop);
+      }
+    ]
+  },
+  {
+    type: RequestType.GET,
     path: '/',
     steps: [
       async (req, res) => {
-        res.end('hello world');
+        return new ApiSuccess(res, 'hello world!');
       }
     ]
   }
@@ -25,12 +40,12 @@ const GET: IRouteGet[] = [
 const PATCH: IRoutePatch[] = [
   {
     type: RequestType.PATCH,
-    path: '/:shopId',
+    path: '/:shop_id',
     steps: [
       async (req, res) => {
         const { body, params } = req;
-        const { shopId } = params;
-        const shop = await Shop.findOne({ shopId });
+        const { shop_id } = params;
+        const shop = await Shop.findById(shop_id);
         if (!shop) {
           throw new ApiNotFound(res);
         }

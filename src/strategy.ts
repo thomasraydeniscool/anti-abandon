@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import { Shop } from './api/shop/shop.model';
+import { Shop } from './api/shops/shop.model';
 
 export class MongooseStrategy {
   private Shop: any;

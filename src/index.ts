@@ -12,23 +12,9 @@ import * as ShopifyClient from 'shopify-api-node';
 
 import { env } from './environment';
 import { MongooseStrategy } from './strategy';
-import { ShopRouter } from './api/shop/shop.routes';
+import { ShopRouter } from './api/shops/shop.routes';
 
 const app = express();
-
-app.use(express.static(path.resolve(__dirname, './public')));
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-app.use(morgan('dev'));
-app.use(
-  expressSession({
-    // store: isDevelopment ? undefined : new RedisStore(),
-    secret: env.SHOPIFY_SECRET,
-    resave: true,
-    saveUninitialized: false
-  })
-);
 
 const shopify = ShopifyExpress({
   host: env.ORIGIN,
@@ -48,6 +34,22 @@ const shopify = ShopifyExpress({
 
 app.use('/shopify', shopify.routes);
 
+app.use('/shops', ShopRouter.routes);
+
+app.use(express.static(path.resolve(__dirname, './public')));
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(morgan('dev'));
+app.use(
+  expressSession({
+    // store: isDevelopment ? undefined : new RedisStore(),
+    secret: env.SHOPIFY_SECRET,
+    resave: true,
+    saveUninitialized: false
+  })
+);
+
 app.get(
   '/',
   // shopify.middleware.withShop({ authBaseUrl: '/shopify' }),
@@ -64,8 +66,6 @@ app.get(
 );
 
 app.get('/install', (req, res) => res.render('install'));
-
-app.use('/shop', ShopRouter.routes);
 
 app.listen(env.PORT, () => {
   // tslint:disable-next-line:no-console
