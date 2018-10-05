@@ -17,11 +17,10 @@ const vue = new Vue({
   el: '#root',
   data: data,
   created: function() {
-    console.log(`${window.origin}/shops/${window.shop}`);
     fetch(`${window.origin}/shops/${window.shop}`)
       .then(res => res.json())
-      .then(json => {
-        console.log(json);
+      .then(store => {
+        data = { ...data, ...store };
       });
   },
   computed: {
