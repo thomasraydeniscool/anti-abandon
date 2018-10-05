@@ -16,7 +16,14 @@ export class MongooseStrategy {
   }
 
   public async storeShop({ shop, accessToken }) {
-    await this.Shop.create({ shopify_domain: shop, access_token: accessToken });
+    try {
+      await this.Shop.create({
+        shopify_domain: shop,
+        access_token: accessToken
+      });
+    } catch (err) {
+      console.log(err);
+    }
 
     return { accessToken };
   }

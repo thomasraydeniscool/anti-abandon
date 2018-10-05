@@ -32,27 +32,36 @@ const shopify = ShopifyExpress({
   shopStore: new MongooseStrategy(env.DATABASE, { useNewUrlParser: true })
 });
 
-app.use('/shopify', shopify.routes);
-
-app.use('/shops', ShopRouter.routes);
-
-app.use(express.static(path.resolve(__dirname, './public')));
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+/**
+ * Middleware
+ */
 app.use(morgan('dev'));
 app.use(
   expressSession({
-    // store: isDevelopment ? undefined : new RedisStore(),
     secret: env.SHOPIFY_SECRET,
     resave: true,
     saveUninitialized: false
   })
 );
 
+/**
+ * View Engine
+ */
+app.use(express.static(path.resolve(__dirname, './public')));
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+/**
+ * Routes
+ */
+app.use('/shopify', shopify.routes);
+
+app.use('/shops', ShopRouter.routes);
+
 app.get(
   '/',
-  // shopify.middleware.withShop({ authBaseUrl: '/shopify' }),
+  shopify.middleware.withShop({ authBaseUrl: '/shopify' }),
   (req, res) => {
     const { session } = req;
     const { shop, accessToken } = session;
@@ -67,6 +76,9 @@ app.get(
 
 app.get('/install', (req, res) => res.render('install'));
 
+/**
+ * Start server
+ */
 app.listen(env.PORT, () => {
   // tslint:disable-next-line:no-console
   console.log(`Server started on port ${env.PORT}`);
