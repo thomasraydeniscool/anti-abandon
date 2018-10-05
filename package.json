@@ -16,12 +16,15 @@
     "ejs": "^2.6.1",
     "envalid": "^4.1.4",
     "express": "^4.16.3",
+    "express-mate": "^1.0.0",
     "express-session": "^1.15.6",
     "http-status": "^1.2.0",
     "mongoose": "^5.3.0",
     "morgan": "^1.9.1",
     "shopify-api-node": "^2.15.0",
-    "shopify-express": "^1.0.3"
+    "shopify-express": "^1.0.3",
+    "vue": "^2.5.17",
+    "vue-server-renderer": "^2.5.17"
   },
   "devDependencies": {
     "@types/express": "^4.16.0",

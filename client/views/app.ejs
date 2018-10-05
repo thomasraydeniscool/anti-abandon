@@ -44,210 +44,39 @@
   </script>
 
   <div id="root">
-    <div class="Polaris-Page">
-      <div class="Polaris-Page__Content">
-        <div class="Polaris-Layout">
+    <Loader v-if="loading"></Loader>
+    <div class="container" v-else>
+      <div class="Polaris-Page">
+        <div class="Polaris-Page__Content">
+          <div class="Polaris-Layout">
 
-          <div class="Polaris-Layout__Section">
-            <div class="">
-              <div class="Polaris-Banner Polaris-Banner--statusSuccess Polaris-Banner--withinPage" tabindex="0" role="status"
-                v-if="store.settings.published">
-                <div class="Polaris-Banner__Ribbon">
-                  <span class="Polaris-Icon Polaris-Icon--colorGreenDark Polaris-Icon--isColored Polaris-Icon--hasBackdrop">
-                    <svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
-                      <g fill-rule="evenodd">
-                        <circle fill="currentColor" cx="10" cy="10" r="9"></circle>
-                        <path d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m2.293-10.707L9 10.586 7.707 9.293a1 1 0 1 0-1.414 1.414l2 2a.997.997 0 0 0 1.414 0l4-4a1 1 0 1 0-1.414-1.414"></path>
-                      </g>
-                    </svg>
-                  </span>
-                </div>
-                <div>
-                  <div class="Polaris-Banner__Heading">
-                    <p class="Polaris-Heading">Active</p>
+            <div class="Polaris-Layout__Section">
+              <div class="">
+                <div class="Polaris-Banner Polaris-Banner--statusSuccess Polaris-Banner--withinPage" tabindex="0" role="status"
+                  v-if="store.settings.published">
+                  <div class="Polaris-Banner__Ribbon">
+                    <span class="Polaris-Icon Polaris-Icon--colorGreenDark Polaris-Icon--isColored Polaris-Icon--hasBackdrop">
+                      <svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+                        <g fill-rule="evenodd">
+                          <circle fill="currentColor" cx="10" cy="10" r="9"></circle>
+                          <path d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m2.293-10.707L9 10.586 7.707 9.293a1 1 0 1 0-1.414 1.414l2 2a.997.997 0 0 0 1.414 0l4-4a1 1 0 1 0-1.414-1.414"></path>
+                        </g>
+                      </svg>
+                    </span>
                   </div>
-                  <div class="Polaris-Banner__Content">
-                    <p>The popup is currently being displayed on your store.</p>
-                    <div class="Polaris-Banner__Actions">
-                      <div class="Polaris-ButtonGroup">
-                        <div class="Polaris-ButtonGroup__Item">
-                          <button type="button" class="Polaris-Button Polaris-Button--destructive Polaris-Button--outline"
-                            @click="deactivate">
-                            <span class="Polaris-Button__Content">
-                              <span>Disable</span>
-                            </span>
-                          </button>
-                        </div>
-                      </div>
+                  <div>
+                    <div class="Polaris-Banner__Heading">
+                      <p class="Polaris-Heading">Active</p>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="Polaris-Banner Polaris-Banner--statusWarning Polaris-Banner--withinPage" tabindex="0" role="alert"
-                v-else>
-                <div class="Polaris-Banner__Ribbon">
-                  <span class="Polaris-Icon Polaris-Icon--colorYellowDark Polaris-Icon--isColored Polaris-Icon--hasBackdrop">
-                    <svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
-                      <g fill-rule="evenodd">
-                        <circle fill="currentColor" cx="10" cy="10" r="9"></circle>
-                        <path d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-13a1 1 0 0 0-1 1v4a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1m0 8a1 1 0 1 0 0 2 1 1 0 0 0 0-2"></path>
-                      </g>
-                    </svg>
-                  </span>
-                </div>
-                <div>
-                  <div class="Polaris-Banner__Heading">
-                    <p class="Polaris-Heading">Hidden</p>
-                  </div>
-                  <div class="Polaris-Banner__Content">
-                    <p>The popup is not being displayed on your store.</p>
-                    <div class="Polaris-Banner__Actions">
-                      <div class="Polaris-ButtonGroup">
-                        <div class="Polaris-ButtonGroup__Item">
-                          <button type="button" class="Polaris-Button Polaris-Button--primary" @click="activate">
-                            <span class="Polaris-Button__Content">
-                              <span>Activate</span>
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="Polaris-Layout__Section">
-            <div class="Polaris-Card">
-
-              <div class="Polaris-Card__Header">
-                <div class="Polaris-Stack Polaris-Stack--alignmentBaseline">
-                  <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
-                    <h2 class="Polaris-Heading">Preview</h2>
-                  </div>
-                  <div class="Polaris-Stack__Item">
-                    <div class="Polaris-ButtonGroup">
-                      <div class="Polaris-ButtonGroup__Item Polaris-ButtonGroup__Item--plain">
-                        <button type="button" class="Polaris-Button Polaris-Button--plain">
-                          <span class="Polaris-Button__Content">
-                            <span>Preview on store</span>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="Polaris-Card__Section">
-
-                <Preview :custom="store.settings.customization" />
-
-              </div>
-
-            </div>
-          </div>
-
-          <div class="Polaris-Layout__AnnotatedSection">
-            <div class="Polaris-Layout__AnnotationWrapper">
-              <div class="Polaris-Layout__Annotation">
-                <div class="Polaris-TextContainer">
-                  <h2 class="Polaris-Heading">Personalisation</h2>
-                  <div class="Polaris-Layout__AnnotationDescription">
-                    <span>Change the appearance of the popup which is displayed to your customers.</span>
-                  </div>
-                </div>
-              </div>
-              <div class="Polaris-Layout__AnnotationContent">
-                <div class="Polaris-Card">
-
-                  <div class="Polaris-Card__Section">
-                    <form @submit.prevent="handleSubmit">
-                      <div class="Polaris-FormLayout">
-                        <div class="Polaris-FormLayout__Item">
-                          <div class="">
-                            <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label">
-                                <label class="Polaris-Label__Text">Header text</label>
-                              </div>
-                            </div>
-                            <div class="Polaris-TextField">
-                              <input class="Polaris-TextField__Input" type="text" v-model="store.settings.customization.text.header">
-                              <div class="Polaris-TextField__Backdrop"></div>
-                            </div>
-                            <div class="Polaris-Labelled__HelpText">
-                              <span>Something to catch your customers attention</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="Polaris-FormLayout__Item">
-                          <div class="">
-                            <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label">
-                                <label class="Polaris-Label__Text">Sub header text</label>
-                              </div>
-                            </div>
-                            <div class="Polaris-TextField">
-                              <input class="Polaris-TextField__Input" type="text" v-model="store.settings.customization.text.sub_header">
-                              <div class="Polaris-TextField__Backdrop"></div>
-                            </div>
-                            <div class="Polaris-Labelled__HelpText">
-                              <span>A bit more detail on what the popup is about</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-
-                  <div class="Polaris-Card__Footer">
-                    <div class="Polaris-ButtonGroup">
-                      <div class="Polaris-ButtonGroup__Item">
-                        <button type="button" class="Polaris-Button Polaris-Button--primary">
-                          <span class="Polaris-Button__Content">
-                            <span>Save</span>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="Polaris-Layout__AnnotatedSection">
-            <div class="Polaris-Layout__AnnotationWrapper">
-              <div class="Polaris-Layout__Annotation">
-                <div class="Polaris-TextContainer">
-                  <h2 class="Polaris-Heading">Discounts</h2>
-                  <div class="Polaris-Layout__AnnotationDescription">
-                    <span>The discounts that your customers are able win and other settings.</span>
-                  </div>
-                </div>
-              </div>
-              <div class="Polaris-Layout__AnnotationContent">
-                <div class="Polaris-Card">
-
-                  <div class="Polaris-Card__Header">
-                    <div class="Polaris-Stack Polaris-Stack--alignmentBaseline">
-                      <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
-                      </div>
-                      <div class="Polaris-Stack__Item">
+                    <div class="Polaris-Banner__Content">
+                      <p>The popup is currently being displayed on your store.</p>
+                      <div class="Polaris-Banner__Actions">
                         <div class="Polaris-ButtonGroup">
-                          <div class="Polaris-ButtonGroup__Item Polaris-ButtonGroup__Item--plain">
-                            <button type="button" class="Polaris-Button Polaris-Button--plain" @click="addDiscount">
+                          <div class="Polaris-ButtonGroup__Item">
+                            <button type="button" class="Polaris-Button Polaris-Button--destructive Polaris-Button--outline"
+                              @click="deactivate">
                               <span class="Polaris-Button__Content">
-                                <span>Add discount</span>
-                              </span>
-                            </button>
-                          </div>
-                          <div class="Polaris-ButtonGroup__Item Polaris-ButtonGroup__Item--plain">
-                            <button type="button" class="Polaris-Button Polaris-Button--plain" @click="removeDiscount">
-                              <span class="Polaris-Button__Content">
-                                <span>Remove discount</span>
+                                <span>Disable</span>
                               </span>
                             </button>
                           </div>
@@ -255,113 +84,290 @@
                       </div>
                     </div>
                   </div>
-
-                  <div class="Polaris-Card__Section">
-                    <form @submit.prevent="handleSubmit">
-                      <div class="Polaris-FormLayout">
-                        <div role="group" class="">
-                          <div class="Polaris-FormLayout__Items">
-                            <div class="Polaris-FormLayout__Item">
-                              <div class="">
-                                <div class="Polaris-Labelled__LabelWrapper">
-                                  <div class="Polaris-Label">
-                                    <label class="Polaris-Label__Text">Discount code 1</label>
-                                  </div>
-                                </div>
-                                <div class="Polaris-TextField">
-                                  <input class="Polaris-TextField__Input" type="text">
-                                  <div class="Polaris-TextField__Backdrop"></div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="Polaris-FormLayout__Item">
-                              <div class="">
-                                <div class="Polaris-Labelled__LabelWrapper">
-                                  <div class="Polaris-Label">
-                                    <label class="Polaris-Label__Text">Chance</label>
-                                  </div>
-                                </div>
-                                <div class="Polaris-TextField">
-                                  <input class="Polaris-TextField__Input" type="text" v-model="firstDiscount" disabled>
-                                  <div class="Polaris-TextField__Backdrop"></div>
-                                </div>
-                                <div class="Polaris-Labelled__HelpText">
-                                  <span>{{ (firstDiscount * 100).toFixed(1) }}% likely to win</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div role="group" class="" v-for="(discount, index) in store.settings.discounts.codes">
-                          <div class="Polaris-FormLayout__Items">
-                            <div class="Polaris-FormLayout__Item">
-                              <div class="">
-                                <div class="Polaris-Labelled__LabelWrapper">
-                                  <div class="Polaris-Label">
-                                    <label class="Polaris-Label__Text">Discount code {{ index + 2 }}</label>
-                                  </div>
-                                </div>
-                                <div class="Polaris-TextField">
-                                  <input class="Polaris-TextField__Input" type="text" v-model="discount.code">
-                                  <div class="Polaris-TextField__Backdrop"></div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="Polaris-FormLayout__Item">
-                              <div class="">
-                                <div class="Polaris-Labelled__LabelWrapper">
-                                  <div class="Polaris-Label">
-                                    <label class="Polaris-Label__Text">Chance</label>
-                                  </div>
-                                </div>
-                                <div class="Polaris-TextField">
-                                  <input class="Polaris-TextField__Input" type="text" v-model="discount.chance">
-                                  <div class="Polaris-TextField__Backdrop"></div>
-                                </div>
-                                <div class="Polaris-Labelled__HelpText">
-                                  <span>{{ (discount.chance * 100).toFixed(1) }}% likely to win</span>
-                                </div>
-                              </div>
-                            </div>
+                </div>
+                <div class="Polaris-Banner Polaris-Banner--statusWarning Polaris-Banner--withinPage" tabindex="0" role="alert"
+                  v-else>
+                  <div class="Polaris-Banner__Ribbon">
+                    <span class="Polaris-Icon Polaris-Icon--colorYellowDark Polaris-Icon--isColored Polaris-Icon--hasBackdrop">
+                      <svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+                        <g fill-rule="evenodd">
+                          <circle fill="currentColor" cx="10" cy="10" r="9"></circle>
+                          <path d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-13a1 1 0 0 0-1 1v4a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1m0 8a1 1 0 1 0 0 2 1 1 0 0 0 0-2"></path>
+                        </g>
+                      </svg>
+                    </span>
+                  </div>
+                  <div>
+                    <div class="Polaris-Banner__Heading">
+                      <p class="Polaris-Heading">Hidden</p>
+                    </div>
+                    <div class="Polaris-Banner__Content">
+                      <p>The popup is not being displayed on your store.</p>
+                      <div class="Polaris-Banner__Actions">
+                        <div class="Polaris-ButtonGroup">
+                          <div class="Polaris-ButtonGroup__Item">
+                            <button type="button" class="Polaris-Button Polaris-Button--primary" @click="activate">
+                              <span class="Polaris-Button__Content">
+                                <span>Activate</span>
+                              </span>
+                            </button>
                           </div>
                         </div>
                       </div>
-                    </form>
-                  </div>
-
-                  <div class="Polaris-Card__Footer">
-                    <div class="Polaris-ButtonGroup">
-                      <div class="Polaris-ButtonGroup__Item">
-                        <button type="button" class="Polaris-Button Polaris-Button--primary">
-                          <span class="Polaris-Button__Content">
-                            <span>Save</span>
-                          </span>
-                        </button>
-                      </div>
                     </div>
                   </div>
-
-                  <div class="Polaris-Card__Section Polaris-Card__Section--subdued">
-                    <div class="Polaris-TextContainer">
-                      <p>
-                        <span class="Polaris-TextStyle--variationSubdued">
-                          It is ensured that the customer always wins something because it is proven bad customer
-                          experience if they were to loose.
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>
-          </div>
 
+            <div class="Polaris-Layout__Section">
+              <div class="Polaris-Card">
+
+                <div class="Polaris-Card__Header">
+                  <div class="Polaris-Stack Polaris-Stack--alignmentBaseline">
+                    <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+                      <h2 class="Polaris-Heading">Preview</h2>
+                    </div>
+                    <div class="Polaris-Stack__Item">
+                      <div class="Polaris-ButtonGroup">
+                        <div class="Polaris-ButtonGroup__Item Polaris-ButtonGroup__Item--plain">
+                          <button type="button" class="Polaris-Button Polaris-Button--plain">
+                            <span class="Polaris-Button__Content">
+                              <span>Preview on store</span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Polaris-Card__Section">
+
+                  <Preview :custom="store.settings.customization"></Preview>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="Polaris-Layout__AnnotatedSection">
+              <div class="Polaris-Layout__AnnotationWrapper">
+                <div class="Polaris-Layout__Annotation">
+                  <div class="Polaris-TextContainer">
+                    <h2 class="Polaris-Heading">Personalisation</h2>
+                    <div class="Polaris-Layout__AnnotationDescription">
+                      <span>Change the appearance of the popup which is displayed to your customers.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="Polaris-Layout__AnnotationContent">
+                  <div class="Polaris-Card">
+
+                    <div class="Polaris-Card__Section">
+                      <form @submit.prevent="handleSubmit">
+                        <div class="Polaris-FormLayout">
+                          <div class="Polaris-FormLayout__Item">
+                            <div class="">
+                              <div class="Polaris-Labelled__LabelWrapper">
+                                <div class="Polaris-Label">
+                                  <label class="Polaris-Label__Text">Header text</label>
+                                </div>
+                              </div>
+                              <div class="Polaris-TextField">
+                                <input class="Polaris-TextField__Input" type="text" v-model="store.settings.customization.text.header">
+                                <div class="Polaris-TextField__Backdrop"></div>
+                              </div>
+                              <div class="Polaris-Labelled__HelpText">
+                                <span>Something to catch your customers attention</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="Polaris-FormLayout__Item">
+                            <div class="">
+                              <div class="Polaris-Labelled__LabelWrapper">
+                                <div class="Polaris-Label">
+                                  <label class="Polaris-Label__Text">Sub header text</label>
+                                </div>
+                              </div>
+                              <div class="Polaris-TextField">
+                                <input class="Polaris-TextField__Input" type="text" v-model="store.settings.customization.text.sub_header">
+                                <div class="Polaris-TextField__Backdrop"></div>
+                              </div>
+                              <div class="Polaris-Labelled__HelpText">
+                                <span>A bit more detail on what the popup is about</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="Polaris-Card__Footer">
+                      <div class="Polaris-ButtonGroup">
+                        <div class="Polaris-ButtonGroup__Item">
+                          <button type="button" class="Polaris-Button Polaris-Button--primary">
+                            <span class="Polaris-Button__Content">
+                              <span>Save</span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="Polaris-Layout__AnnotatedSection">
+              <div class="Polaris-Layout__AnnotationWrapper">
+                <div class="Polaris-Layout__Annotation">
+                  <div class="Polaris-TextContainer">
+                    <h2 class="Polaris-Heading">Discounts</h2>
+                    <div class="Polaris-Layout__AnnotationDescription">
+                      <span>The discounts that your customers are able win and other settings.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="Polaris-Layout__AnnotationContent">
+                  <div class="Polaris-Card">
+
+                    <div class="Polaris-Card__Header">
+                      <div class="Polaris-Stack Polaris-Stack--alignmentBaseline">
+                        <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+                        </div>
+                        <div class="Polaris-Stack__Item">
+                          <div class="Polaris-ButtonGroup">
+                            <div class="Polaris-ButtonGroup__Item Polaris-ButtonGroup__Item--plain">
+                              <button type="button" class="Polaris-Button Polaris-Button--plain" @click="addDiscount">
+                                <span class="Polaris-Button__Content">
+                                  <span>Add discount</span>
+                                </span>
+                              </button>
+                            </div>
+                            <div class="Polaris-ButtonGroup__Item Polaris-ButtonGroup__Item--plain">
+                              <button type="button" class="Polaris-Button Polaris-Button--plain" @click="removeDiscount">
+                                <span class="Polaris-Button__Content">
+                                  <span>Remove discount</span>
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="Polaris-Card__Section">
+                      <form @submit.prevent="handleSubmit">
+                        <div class="Polaris-FormLayout">
+                          <div role="group" class="">
+                            <div class="Polaris-FormLayout__Items">
+                              <div class="Polaris-FormLayout__Item">
+                                <div class="">
+                                  <div class="Polaris-Labelled__LabelWrapper">
+                                    <div class="Polaris-Label">
+                                      <label class="Polaris-Label__Text">Discount code 1</label>
+                                    </div>
+                                  </div>
+                                  <div class="Polaris-TextField">
+                                    <input class="Polaris-TextField__Input" type="text">
+                                    <div class="Polaris-TextField__Backdrop"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="Polaris-FormLayout__Item">
+                                <div class="">
+                                  <div class="Polaris-Labelled__LabelWrapper">
+                                    <div class="Polaris-Label">
+                                      <label class="Polaris-Label__Text">Chance</label>
+                                    </div>
+                                  </div>
+                                  <div class="Polaris-TextField">
+                                    <input class="Polaris-TextField__Input" type="text" v-model="firstDiscount"
+                                      disabled>
+                                    <div class="Polaris-TextField__Backdrop"></div>
+                                  </div>
+                                  <div class="Polaris-Labelled__HelpText">
+                                    <span>{{ (firstDiscount * 100).toFixed(1) }}% likely to win</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div role="group" class="" v-for="(discount, index) in store.settings.discounts.codes">
+                            <div class="Polaris-FormLayout__Items">
+                              <div class="Polaris-FormLayout__Item">
+                                <div class="">
+                                  <div class="Polaris-Labelled__LabelWrapper">
+                                    <div class="Polaris-Label">
+                                      <label class="Polaris-Label__Text">Discount code {{ index + 2 }}</label>
+                                    </div>
+                                  </div>
+                                  <div class="Polaris-TextField">
+                                    <input class="Polaris-TextField__Input" type="text" v-model="discount.code">
+                                    <div class="Polaris-TextField__Backdrop"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="Polaris-FormLayout__Item">
+                                <div class="">
+                                  <div class="Polaris-Labelled__LabelWrapper">
+                                    <div class="Polaris-Label">
+                                      <label class="Polaris-Label__Text">Chance</label>
+                                    </div>
+                                  </div>
+                                  <div class="Polaris-TextField">
+                                    <input class="Polaris-TextField__Input" type="text" v-model="discount.chance">
+                                    <div class="Polaris-TextField__Backdrop"></div>
+                                  </div>
+                                  <div class="Polaris-Labelled__HelpText">
+                                    <span>{{ (discount.chance * 100).toFixed(1) }}% likely to win</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="Polaris-Card__Footer">
+                      <div class="Polaris-ButtonGroup">
+                        <div class="Polaris-ButtonGroup__Item">
+                          <button type="button" class="Polaris-Button Polaris-Button--primary">
+                            <span class="Polaris-Button__Content">
+                              <span>Save</span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="Polaris-Card__Section Polaris-Card__Section--subdued">
+                      <div class="Polaris-TextContainer">
+                        <p>
+                          <span class="Polaris-TextStyle--variationSubdued">
+                            It is ensured that the customer always wins something because it is proven bad customer
+                            experience if they were to loose.
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
   </div>
+
+  <%- include('components/Loader') -%>
 
   <%- include('components/Preview') -%>
 

@@ -1,4 +1,5 @@
 const data = {
+  loading: true,
   store: {
     settings: {
       published: true,
@@ -19,10 +20,12 @@ const vue = new Vue({
   el: '#root',
   data: data,
   created: function() {
+    this.loading = true;
     fetch(`${window.origin}/shops/${window.shop}`)
       .then(res => res.json())
       .then(res => {
-        this.store = { ...this.store, ...res.data };
+        this.$set(this, 'store', res.data);
+        this.loading = false;
       });
   },
   computed: {

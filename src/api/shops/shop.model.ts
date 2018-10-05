@@ -3,10 +3,12 @@ import * as mongoose from 'mongoose';
 export const ShopSchema = new mongoose.Schema({
   shopify_domain: {
     type: String,
-    unique: true
+    unique: true,
+    required: true
   },
   access_token: {
-    type: String
+    type: String,
+    required: true
   },
   settings: {
     published: {
@@ -17,16 +19,19 @@ export const ShopSchema = new mongoose.Schema({
     customization: {
       text: {
         header: {
-          type: String
+          type: String,
+          default: 'Pick a card'
         },
         sub_header: {
-          type: String
+          type: String,
+          default: 'You could win up to 50% off!'
         }
       }
     },
     discounts: {
       codes: {
-        type: [{ code: String, chance: Number }]
+        type: [{ code: String, chance: Number }],
+        default: []
       }
     }
   }
