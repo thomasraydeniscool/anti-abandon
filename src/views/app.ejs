@@ -37,7 +37,7 @@
     // access to React and Redux dev tools, but will also disrupt
     // postmessages to the parent and block EASDK calls
     // https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-init-config
-    if ("<%= development %>") {
+    if ("<%= development %>" === true) {
       shopifyAppConfig.forceRedirect = false;
     }
     ShopifyApp.init(shopifyAppConfig);
@@ -72,7 +72,7 @@
                       <div class="Polaris-ButtonGroup">
                         <div class="Polaris-ButtonGroup__Item">
                           <button type="button" class="Polaris-Button Polaris-Button--destructive Polaris-Button--outline"
-                            @click="deactivate">
+                            @click="settings.published = false">
                             <span class="Polaris-Button__Content">
                               <span>Disable</span>
                             </span>
@@ -104,7 +104,7 @@
                     <div class="Polaris-Banner__Actions">
                       <div class="Polaris-ButtonGroup">
                         <div class="Polaris-ButtonGroup__Item">
-                          <button type="button" class="Polaris-Button Polaris-Button--primary" @click="activate">
+                          <button type="button" class="Polaris-Button Polaris-Button--primary" @click="settings.published = true">
                             <span class="Polaris-Button__Content">
                               <span>Activate</span>
                             </span>

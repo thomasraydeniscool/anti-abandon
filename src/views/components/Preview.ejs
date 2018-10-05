@@ -43,8 +43,8 @@
 
 <script type="text/x-template" id="preview-template">
 <div class="preview">
-  <h1 class="header">{{ custom.header }}</h1>
-  <h4 class="sub-header">{{ custom.subHeader }}</h4>
+  <h1 class="header">{{ custom.text.header }}</h1>
+  <h4 class="sub-header">{{ custom.text.sub_header }}</h4>
   <div class="card-group">
     <div class="card"></div>
     <div class="card"></div>
@@ -59,8 +59,10 @@
     template: '#preview-template',
     props: {
       custom: {
-        header: String,
-        subHeader: String
+        text: {
+          header: String,
+          sub_header: String
+        }
       },
     },
     data: function () {
