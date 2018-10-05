@@ -1,13 +1,13 @@
 import {
+  ApiSuccess,
+  ApiNotFound,
   Router,
   IRouteGet,
   RequestType,
   IRoutePatch,
   IRoutePost
-} from '../../lib/Router';
+} from 'express-mate';
 import { Shop } from './shop.model';
-import { ApiNotFound } from '../../lib/ApiNotFound';
-import { ApiSuccess } from '../../lib/ApiSuccess';
 import { env } from '../../environment';
 
 const GET: IRouteGet[] = [
