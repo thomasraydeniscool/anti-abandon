@@ -21,8 +21,8 @@ const vue = new Vue({
   created: function() {
     fetch(`${window.origin}/shops/${window.shop}`)
       .then(res => res.json())
-      .then(store => {
-        this.store = { ...this.store, ...store };
+      .then(res => {
+        this.store = { ...this.store, ...res.data };
       });
   },
   computed: {
@@ -39,7 +39,7 @@ const vue = new Vue({
   },
   methods: {
     activate: function() {
-      fetch(`${window.origin}/shops/${window.shop}`, {
+      fetch(`${window.origin}/shops/${this.shop._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
@@ -54,7 +54,7 @@ const vue = new Vue({
       });
     },
     deactivate: function() {
-      fetch(`${window.origin}/shops/${window.shop}`, {
+      fetch(`${window.origin}/shops/${this.shop._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
@@ -69,7 +69,7 @@ const vue = new Vue({
       });
     },
     saveCustomizations: function() {
-      fetch(`${window.origin}/shops/${window.shop}`, {
+      fetch(`${window.origin}/shops/${this.shop._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
@@ -90,7 +90,7 @@ const vue = new Vue({
       }
     },
     saveDiscounts: function() {
-      fetch(`${window.origin}/shops/${window.shop}`, {
+      fetch(`${window.origin}/shops/${this.shop._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
