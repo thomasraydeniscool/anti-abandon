@@ -51,7 +51,7 @@
           <div class="Polaris-Layout__Section">
             <div class="">
               <div class="Polaris-Banner Polaris-Banner--statusSuccess Polaris-Banner--withinPage" tabindex="0" role="status"
-                v-if="settings.published">
+                v-if="store.settings.published">
                 <div class="Polaris-Banner__Ribbon">
                   <span class="Polaris-Icon Polaris-Icon--colorGreenDark Polaris-Icon--isColored Polaris-Icon--hasBackdrop">
                     <svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
@@ -72,7 +72,7 @@
                       <div class="Polaris-ButtonGroup">
                         <div class="Polaris-ButtonGroup__Item">
                           <button type="button" class="Polaris-Button Polaris-Button--destructive Polaris-Button--outline"
-                            @click="settings.published = false">
+                            @click="deactivate">
                             <span class="Polaris-Button__Content">
                               <span>Disable</span>
                             </span>
@@ -104,7 +104,7 @@
                     <div class="Polaris-Banner__Actions">
                       <div class="Polaris-ButtonGroup">
                         <div class="Polaris-ButtonGroup__Item">
-                          <button type="button" class="Polaris-Button Polaris-Button--primary" @click="settings.published = true">
+                          <button type="button" class="Polaris-Button Polaris-Button--primary" @click="activate">
                             <span class="Polaris-Button__Content">
                               <span>Activate</span>
                             </span>
@@ -142,7 +142,7 @@
 
               <div class="Polaris-Card__Section">
 
-                <Preview :custom="settings.customization" />
+                <Preview :custom="store.settings.customization" />
 
               </div>
 
@@ -173,7 +173,7 @@
                               </div>
                             </div>
                             <div class="Polaris-TextField">
-                              <input class="Polaris-TextField__Input" type="text" v-model="settings.customization.text.header">
+                              <input class="Polaris-TextField__Input" type="text" v-model="store.settings.customization.text.header">
                               <div class="Polaris-TextField__Backdrop"></div>
                             </div>
                             <div class="Polaris-Labelled__HelpText">
@@ -189,7 +189,7 @@
                               </div>
                             </div>
                             <div class="Polaris-TextField">
-                              <input class="Polaris-TextField__Input" type="text" v-model="settings.customization.text.sub_header">
+                              <input class="Polaris-TextField__Input" type="text" v-model="store.settings.customization.text.sub_header">
                               <div class="Polaris-TextField__Backdrop"></div>
                             </div>
                             <div class="Polaris-Labelled__HelpText">
@@ -292,7 +292,7 @@
                             </div>
                           </div>
                         </div>
-                        <div role="group" class="" v-for="(discount, index) in settings.discounts.codes">
+                        <div role="group" class="" v-for="(discount, index) in store.settings.discounts.codes">
                           <div class="Polaris-FormLayout__Items">
                             <div class="Polaris-FormLayout__Item">
                               <div class="">

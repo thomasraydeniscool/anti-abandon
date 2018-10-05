@@ -1,14 +1,16 @@
-let data = {
-  settings: {
-    published: true,
-    customization: {
-      text: {
-        header: 'Pick a card',
-        sub_header: 'You could win up to 50% off!'
+const data = {
+  store: {
+    settings: {
+      published: true,
+      customization: {
+        text: {
+          header: 'Pick a card',
+          sub_header: 'You could win up to 50% off!'
+        }
+      },
+      discounts: {
+        codes: []
       }
-    },
-    discounts: {
-      codes: []
     }
   }
 };
@@ -20,7 +22,7 @@ const vue = new Vue({
     fetch(`${window.origin}/shops/${window.shop}`)
       .then(res => res.json())
       .then(store => {
-        data = { ...data, ...store };
+        this.store = { ...this.store, ...store };
       });
   },
   computed: {
@@ -28,7 +30,7 @@ const vue = new Vue({
       return Math.max(
         0,
         1 -
-          this.settings.discounts.codes
+          this.store.settings.discounts.codes
             .map(discount => Number(discount.chance))
             .filter(chance => !isNaN(chance))
             .reduce((prev, chance) => prev + chance, 0)
@@ -48,7 +50,7 @@ const vue = new Vue({
           }
         }
       }).then(() => {
-        this.published = true;
+        this.store.settings.published = true;
       });
     },
     deactivate: function() {
@@ -63,7 +65,7 @@ const vue = new Vue({
           }
         }
       }).then(() => {
-        this.published = false;
+        this.store.settings.published = false;
       });
     },
     saveCustomizations: function() {
@@ -74,17 +76,17 @@ const vue = new Vue({
         },
         body: {
           settings: {
-            customization: this.settings.customization
+            customization: this.store.settings.customization
           }
         }
       });
     },
     addDiscount: function() {
-      this.settings.discounts.codes.push({ code: '', chance: 0.2 });
+      this.store.settings.discounts.codes.push({ code: '', chance: 0.2 });
     },
     removeDiscount: function() {
-      if (this.settings.discounts.codes.length) {
-        this.settings.discounts.codes.pop();
+      if (this.store.settings.discounts.codes.length) {
+        this.store.settings.discounts.codes.pop();
       }
     },
     saveDiscounts: function() {
@@ -95,7 +97,7 @@ const vue = new Vue({
         },
         body: {
           settings: {
-            discounts: this.settings.discounts
+            discounts: this.store.settings.discounts
           }
         }
       });
