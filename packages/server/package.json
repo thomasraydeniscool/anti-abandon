@@ -19,7 +19,7 @@
     "express-mate": "^1.0.0",
     "express-session": "^1.15.6",
     "http-status": "^1.2.0",
-    "mongoose": "^5.3.0",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "shopify-api-node": "^2.15.0",
     "shopify-express": "^1.0.3",
